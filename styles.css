@@ -1,0 +1,376 @@
+/* Reset and base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Quattrocento', serif;
+    overflow: hidden;
+    width: 100%;
+    height: 100vh;
+}
+
+/* Container */
+.container {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* Fixed velvet background */
+.velvet-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 1;
+}
+
+.velvet-background img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 50% 50%;
+    pointer-events: none;
+}
+
+/* Scrollable screen area */
+.screen {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh; /* Fills the viewport vertically */
+    
+    display: flex;
+    justify-content: center; /* Horizontally centers .paper */
+    align-items: flex-start; /* Keeps .paper at the top after its margin-top */
+    
+    overflow-x: clip;
+    overflow-y: auto;
+    z-index: 2;
+}
+
+/* Paper container */
+.paper {
+    position: relative; /* CRITICAL: Makes this the positioning context for absolute children */
+    margin-top: 58px; 
+    margin-bottom: 58px;
+    width: 615px;
+    height: 1485px;
+    overflow-x: clip;
+    overflow-y: auto;
+    /* Optional: background-color: white; for quick debugging */
+}
+
+.paper-texture {
+    position: absolute;
+    top: 0;
+    left: 0; /* CRITICAL: Align to top-left of the .paper container */
+    /* REMOVED: transform: translateX(-50%); */
+    width: 617px;
+    height: 1166px;
+}
+
+.paper-texture img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 50% 50%;
+    pointer-events: none;
+}
+
+/* Corner filigrees (Positioning is now relative to .paper) */
+.filigree-corner-tl {
+    position: absolute;
+    top: 30px;
+    left: 24px;
+    width: 111px;
+    height: 101px;
+    z-index: 3; /* Added z-index to ensure it is above the texture */
+}
+
+.filigree-corner-tl img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 50% 50%;
+    pointer-events: none;
+}
+
+.filigree-corner-tr {
+    position: absolute;
+    top: 30px;
+    right: 23px;
+    width: 111px;
+    height: 101px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 3; /* Added z-index to ensure it is above the texture */
+}
+
+.filigree-corner-tr img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 50% 50%;
+    pointer-events: none;
+    transform: rotate(180deg) scaleY(-1);
+}
+
+/* Content area (Positioning is now relative to .paper, centering is fine) */
+.content {
+    position: absolute;
+    top: 29.5px;
+    left: calc(50% + 0.5px);
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding: 10px;
+    z-index: 3; /* Added z-index to ensure it is above the texture */
+    width: 90%; /* Added a percentage width to help content fit */
+}
+
+/* Crown */
+.crown {
+    width: 118px;
+    height: 65px;
+    flex-shrink: 0;
+    position: relative;
+}
+
+.crown img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 50% 50%;
+    pointer-events: none;
+}
+
+/* Heading */
+.heading {
+    width: 289px;
+    height: 44px;
+    flex-shrink: 0;
+    position: relative;
+}
+
+.heading p {
+    position: absolute;
+    inset: 0;
+    font-family: 'Cinzel Decorative', serif;
+    font-style: normal;
+    font-size: 32.463px;
+    line-height: normal;
+    color: #bf8e57;
+    white-space: nowrap;
+}
+
+/* Intro text */
+.intro-text {
+    width: 457px;
+    height: 34px;
+    flex-shrink: 0;
+    position: relative;
+}
+
+.intro-text p {
+    font-family: 'Quattrocento', serif;
+    font-style: normal;
+    font-size: 15px;
+    line-height: normal;
+    color: #403244;
+    text-align: center;
+    margin-bottom: 0;
+}
+
+.intro-text .superscript {
+    font-size: 9.675px;
+}
+
+.intro-text .rsvp {
+    font-family: 'Quattrocento', serif;
+    font-weight: 700;
+    color: #bf8e57;
+}
+
+/* Filigree divider */
+.filigree-divider {
+    width: 93px;
+    height: 40px;
+    flex-shrink: 0;
+    position: relative;
+}
+
+.filigree-divider img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 50% 50%;
+    pointer-events: none;
+}
+
+/* Details text */
+.details-text {
+    width: 457px;
+    height: 102px;
+    flex-shrink: 0;
+    position: relative;
+}
+
+.details-text p {
+    font-family: 'Quattrocento', serif;
+    font-style: normal;
+    font-size: 15px;
+    line-height: normal;
+    color: #403244;
+    text-align: center;
+    margin-bottom: 0;
+}
+
+.details-text .save-date {
+    color: #bf8e57;
+    cursor: pointer;
+}
+
+.details-text .save-date a {
+    color: #bf8e57;
+    text-decoration: none;
+}
+
+.details-text .save-date a:hover {
+    text-decoration: underline;
+}
+
+/* Map container */
+.map-container {
+    width: 473px;
+    height: 139px;
+    flex-shrink: 0;
+    background: #bf8e57;
+    position: relative;
+    z-index: 1;
+}
+
+/* Map note */
+.map-note {
+    width: 457px;
+    height: 22px;
+    flex-shrink: 0;
+    position: relative;
+}
+
+.map-note p {
+    position: absolute;
+    inset: 0;
+    font-family: 'Quattrocento', serif;
+    font-style: normal;
+    font-size: 10px;
+    line-height: normal;
+    color: #403244;
+    text-align: center;
+    white-space: pre-wrap;
+}
+
+/* Section text */
+.section-text {
+    width: 457px;
+    flex-shrink: 0;
+    position: relative;
+}
+
+.section-text p {
+    font-family: 'Quattrocento', serif;
+    font-style: normal;
+    font-size: 15px;
+    line-height: normal;
+    color: #403244;
+    text-align: center;
+    margin-bottom: 0;
+}
+
+/* Scroll to top button */
+.scroll-to-top {
+    position: absolute;
+    bottom: 13.5px;
+    right: 18.28px;
+    width: 64.734px;
+    height: 62.351px;
+    display: block;
+    overflow: visible;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    cursor: pointer;
+    border: none;
+    background: transparent;
+    z-index: 10;
+}
+
+.scroll-to-top .arrow {
+    position: absolute;
+    width: 64.734px;
+    height: 62.351px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.scroll-to-top .arrow img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 50% 50%;
+    pointer-events: none;
+}
+
+/* Leaflet map styles */
+.leaflet-container {
+    width: 100%;
+    height: 100%;
+    background: #bf8e57;
+}
+
+.leaflet-control-attribution {
+    font-size: 8px !important;
+}
+
+/* Custom marker popup */
+.leaflet-popup-content-wrapper {
+    background: #fff;
+    color: #403244;
+    font-family: 'Quattrocento', serif;
+    font-size: 12px;
+    text-align: center;
+}
+
+.leaflet-popup-content {
+    margin: 8px 12px;
+}
+
+.leaflet-popup-content a {
+    color: #bf8e57;
+    text-decoration: none;
+}
+
+.leaflet-popup-content a:hover {
+    text-decoration: underline;
+}

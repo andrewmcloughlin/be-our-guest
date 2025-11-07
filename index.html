@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ada's Princess Ball - You Are Invited</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400&family=Quattrocento:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Fixed velvet background -->
+        <div class="velvet-background">
+            <img src="assets/velvet.png" alt="soft velvet textured background with floral decal">
+        </div>
+
+        <!-- Scrollable screen area -->
+        <div class="screen">
+            <!-- Paper container -->
+            <div class="paper">
+                <!-- Paper texture background -->
+                <div class="paper-texture">
+                    <img src="assets/paper-texture.png" alt="Paper texture">
+                </div>
+
+                <!-- Corner decorations -->
+                <div class="filigree-corner-tl">
+                    <img src="assets/filigree-corner.png" alt="Filigree corner top left">
+                </div>
+                <div class="filigree-corner-tr">
+                    <img src="assets/filigree-corner.png" alt="Filigree corner top right">
+                </div>
+
+                <!-- Content -->
+                <div class="content">
+                    <div class="crown">
+                        <img src="assets/crown.png" alt="Crown">
+                    </div>
+
+                    <div class="heading">
+                        <p>You are invited</p>
+                    </div>
+
+                    <div class="intro-text">
+                        <p>You are cordially invited to attend Ada's princess ball</p>
+                        <p>on Saturday December 20<span class="superscript">th</span>.</p>
+                        <a href="https://forms.gle/qEa7g6nK1zREnyiYA" class="rsvp">R.S.V.P.</a>
+                    </div>
+
+                    <div class="filigree-divider">
+                        <img src="assets/filigree-divider.png" alt="">
+                    </div>
+
+                    <div class="details-text">
+                        <p>Time:</p>
+                        <p>Saturday 20th December 11am - 2pm</p>
+                        <p class="save-date"><a href="#" id="saveDate">Save the Date</a></p>
+                        <p>&nbsp;</p>
+                        <p>Location:</p>
+                        <p>Meadows Community Centre</p>
+                    </div>
+
+                    <div id="map" class="rounded-xl border-4 border-indigo-400 shadow-xl"></div>
+
+                    <div class="map-note">
+                        <p>NB. Google Maps  has not been updated with the new entrance to the community centre car park. Check this Open Street Map for correct info. </p>
+                    </div>
+
+                    <div class="filigree-divider">
+                        <img src="assets/filigree-divider.png" alt="Filigree divider">
+                    </div>
+
+                    <div class="section-text">
+                        <p>Entertainment</p>
+                        <p>Soft play ・ crafts table ・ disco ・ snacks ・ drinks</p>
+                    </div>
+
+                    <div class="filigree-divider">
+                        <img src="assets/filigree-divider.png" alt="Filigree divider">
+                    </div>
+
+                    <div class="section-text">
+                        <p>Facilities:</p>
+                        <p>free parking ・toilets ・baby changing</p>
+                        <p>kitchen ・wheelchair accessible</p>
+                    </div>
+
+                    <div class="filigree-divider">
+                        <img src="assets/filigree-divider.png" alt="Filigree divider">
+                    </div>
+
+                    <div class="section-text">
+                        <p>No need to bring gifts</p>
+                        <p>Anyone bringing gifts will be executed.</p>
+                    </div>
+
+                    <div class="filigree-divider">
+                        <img src="assets/filigree-divider.png" alt="Filigree divider">
+                    </div>
+
+                    <div class="section-text">
+                        <p>Dress code: Please wear your fanciest dress</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scroll to top button -->
+        <button class="scroll-to-top" id="scrollToTop">
+            <div class="arrow">
+                <img src="assets/arrow.png" alt="Scroll to top">
+            </div>
+        </button>
+    </div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
