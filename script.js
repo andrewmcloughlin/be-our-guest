@@ -1,10 +1,5 @@
 // Initialize map when DOM is loaded
-document.addEventListener('DOMContentLoaded', function() {
-    initMap();
-    initScrollToTop();
-    initSaveTheDate();
-});
-
+document.addEventListener('DOMContentLoaded',function(){initializeMap();initScrollToTop();initSaveTheDate();});
 /// --- 1. Interactive Map Setup (Leaflet) ---
 function initializeMap() {
     // Approximate coordinates for Meadows Community Centre, Cambridge
