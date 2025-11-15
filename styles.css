@@ -59,22 +59,30 @@ body {
 }
 
 /* Paper container */
-.paper {
-    position: relative; /* CRITICAL: Makes this the positioning context for absolute children */
+/* .paper {
+    position: relative;
     margin-top: 58px; 
     margin-bottom: 58px;
     width: 615px;
     height: 1485px;
     overflow-x: clip;
     overflow-y: auto;
-    /* Optional: background-color: white; for quick debugging */
+} */
+
+.paper {
+    position: relative; /* CRITICAL: Makes this the positioning context for absolute children */
+    margin-top: 58px; 
+    margin-bottom: 58px;
+    min-width: 75vw; /* Sets the minimum width to 75% of the viewport width */
+    height: 1485px;
+    overflow-x: clip;
+    overflow-y: auto;
 }
 
 .paper-texture {
     position: absolute;
     top: 0;
-    left: 0; /* CRITICAL: Align to top-left of the .paper container */
-    /* REMOVED: transform: translateX(-50%); */
+    left: 0;
     width: 617px;
     height: 1166px;
 }
@@ -373,4 +381,5 @@ body {
 
 .leaflet-popup-content a:hover {
     text-decoration: underline;
+
 }
