@@ -65,8 +65,8 @@ function downloadICS() {
         title: "Ada's Princess Ball",
         description: "You are cordially invited to attend Ada's princess ball. Entertainment includes soft play, crafts table, disco, snacks, and drinks. Dress code: Please wear your fanciest dress. No need to bring gifts!",
         location: "Meadows Community Centre",
-        start: new Date('2025-12-20T11:00:00'),
-        end: new Date('2025-12-20T14:00:00')
+        start: new Date('2025-12-20T10:30:00'),
+        end: new Date('2025-12-20T12:30:00')
     };
 
     // Format dates for ICS (YYYYMMDDTHHMMSS)
@@ -120,3 +120,4 @@ function downloadICS() {
     document.body.removeChild(link);
     window.URL.revokeObjectURL(url);
 }
+
