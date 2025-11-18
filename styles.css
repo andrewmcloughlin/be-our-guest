@@ -1,3 +1,13 @@
+/* Global color variables */
+:root {
+    --color-brand-primary: #d8a434;
+    --color-brand-dark: #403244;
+
+    /* Override Bootstrap primary color */
+    --bs-primary: var(--color-brand-primary);
+    --bs-primary-rgb: 191, 142, 87;
+}
+
 /* Reset and base styles */
 * {
     margin: 0;
@@ -12,22 +22,9 @@ body {
     height: 100vh;
 }
 
-/* Container */
-.container {
-    position: relative;
-    width: 100%;
-    height: 100vh;
-    overflow: hidden;
-}
-
 /* Fixed velvet background */
 .velvet-background {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    z-index: 1;
+    object-position: center top;
 }
 
 .velvet-background img {
@@ -38,63 +35,21 @@ body {
     object-fit: cover;
     object-position: 50% 50%;
     pointer-events: none;
+    object-position: center top;
 }
 
 /* Scrollable screen area */
 .screen {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh; /* Fills the viewport vertically */
-    
-    display: flex;
-    justify-content: center; /* Horizontally centers .paper */
-    align-items: flex-start; /* Keeps .paper at the top after its margin-top */
-    
     overflow-x: clip;
     overflow-y: auto;
-    z-index: 2;
 }
-
-/* Paper container */
-/* .paper {
-    position: relative;
-    margin-top: 58px; 
-    margin-bottom: 58px;
-    width: 615px;
-    height: 1485px;
-    overflow-x: clip;
-    overflow-y: auto;
-} */
-/* 
-.paper-texture {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 617px;
-    height: 1166px;
-}
-
-.paper-texture img {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: 50% 50%;
-    pointer-events: none;
-} */
 
 .paper {
-    position: relative;
-    margin-top: 58px; 
-    margin-bottom: 58px;
-    min-width: 75vw;
-    height: 1485px;
+    margin-top: 5vh; 
+    margin-bottom: 5vh;
     overflow-x: clip;
-    overflow-y: auto;
+    overflow-y: visible;
+    padding: 2rem;
 }
 
 .paper-texture {
@@ -103,6 +58,7 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
+    z-index: 1;
 }
 
 .paper-texture img {
@@ -116,59 +72,59 @@ body {
 }
 
 /* Corner filigrees (Positioning is now relative to .paper) */
-.filigree-corner-tl {
+.filigree-corner-tl,
+.filigree-corner-tr,
+.filigree-corner-br,
+.filigree-corner-bl {
     position: absolute;
-    top: 30px;
-    left: 24px;
     width: 111px;
     height: 101px;
-    z-index: 3; /* Added z-index to ensure it is above the texture */
+    z-index: 3;
 }
 
-.filigree-corner-tl img {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: 50% 50%;
-    pointer-events: none;
+.filigree-corner-tl {
+    top: 30px;
+    left: 30px;
 }
 
 .filigree-corner-tr {
-    position: absolute;
     top: 30px;
-    right: 23px;
-    width: 111px;
-    height: 101px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 3; /* Added z-index to ensure it is above the texture */
+    right: 30px;
 }
 
-.filigree-corner-tr img {
+.filigree-corner-br {
+    bottom: 30px;
+    right: 30px;
+}
+
+.filigree-corner-bl {
+    bottom: 30px;
+    left: 30px;
+}
+
+.filigree-corner-tl img,
+.filigree-corner-tr img,
+.filigree-corner-bl img,
+.filigree-corner-br img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
-    object-position: 50% 50%;
+    object-fit: contain;
     pointer-events: none;
-    transform: rotate(180deg) scaleY(-1);
+}
+.filigree-corner-tr img {
+    transform: scaleX(-1); /* Flip horizontally */
+}
+.filigree-corner-br img {
+    transform: rotate(180deg);
+}
+.filigree-corner-bl img {
+    transform: scaleY(-1); /* Flip vertically */
 }
 
 /* Content area (Positioning is now relative to .paper, centering is fine) */
 .content {
-    position: absolute;
-    top: 29.5px;
-    left: calc(50% + 0.5px);
-    transform: translateX(-50%);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
-    padding: 10px;
-    z-index: 3; /* Added z-index to ensure it is above the texture */
-    width: 90%; /* Added a percentage width to help content fit */
+    z-index: 2; /* Ensure content is above paper texture */
+    padding-top: 29.5px;
 }
 
 /* Crown */
@@ -184,56 +140,13 @@ body {
     inset: 0;
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: fill;
     object-position: 50% 50%;
     pointer-events: none;
 }
 
-/* Heading */
-.heading {
-    width: 289px;
-    height: 44px;
-    flex-shrink: 0;
-    position: relative;
-}
-
-.heading p {
-    position: absolute;
-    inset: 0;
-    font-family: 'Cinzel Decorative', serif;
-    font-style: normal;
-    font-size: 32.463px;
-    line-height: normal;
-    color: #bf8e57;
-    white-space: nowrap;
-}
-
-/* Intro text */
-.intro-text {
-    width: 457px;
-    height: 34px;
-    flex-shrink: 0;
-    position: relative;
-}
-
-.intro-text p {
-    font-family: 'Quattrocento', serif;
-    font-style: normal;
-    font-size: 15px;
-    line-height: normal;
-    color: #403244;
-    text-align: center;
-    margin-bottom: 0;
-}
-
 .intro-text .superscript {
     font-size: 9.675px;
-}
-
-.intro-text .rsvp {
-    font-family: 'Quattrocento', serif;
-    font-weight: 700;
-    color: #bf8e57;
 }
 
 /* Filigree divider */
@@ -249,93 +162,14 @@ body {
     inset: 0;
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: fill;
     object-position: 50% 50%;
     pointer-events: none;
 }
 
-/* Details text */
-.details-text {
-    width: 457px;
-    height: 102px;
-    flex-shrink: 0;
-    position: relative;
-}
-
-.details-text p {
-    font-family: 'Quattrocento', serif;
-    font-style: normal;
-    font-size: 15px;
-    line-height: normal;
-    color: #403244;
-    text-align: center;
-    margin-bottom: 0;
-}
-
-.details-text .save-date {
-    color: #bf8e57;
-    cursor: pointer;
-}
-
-.details-text .save-date a {
-    color: #bf8e57;
-    text-decoration: none;
-}
-
-.details-text .save-date a:hover {
-    text-decoration: underline;
-}
-
-/* Map container */
-.map-container {
-    width: 473px;
-    height: 139px;
-    flex-shrink: 0;
-    background: #bf8e57;
-    position: relative;
-    z-index: 1;
-}
-
-/* Map note */
-.map-note {
-    width: 457px;
-    height: 22px;
-    flex-shrink: 0;
-    position: relative;
-}
-
-.map-note p {
-    position: absolute;
-    inset: 0;
-    font-family: 'Quattrocento', serif;
-    font-style: normal;
-    font-size: 10px;
-    line-height: normal;
-    color: #403244;
-    text-align: center;
-    white-space: pre-wrap;
-}
-
-/* Section text */
-.section-text {
-    width: 457px;
-    flex-shrink: 0;
-    position: relative;
-}
-
-.section-text p {
-    font-family: 'Quattrocento', serif;
-    font-style: normal;
-    font-size: 15px;
-    line-height: normal;
-    color: #403244;
-    text-align: center;
-    margin-bottom: 0;
-}
-
 /* Scroll to top button */
 .scroll-to-top {
-    position: absolute;
+    position: fixed; /* Changed to fixed to stay in viewport */
     bottom: 13.5px;
     right: 18.28px;
     width: 64.734px;
@@ -346,59 +180,84 @@ body {
     cursor: pointer;
     border: none;
     background: transparent;
-    z-index: 10;
+    z-index: 10;    
+    opacity: 0; /* Hidden by default */
+    visibility: hidden;
+    transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
 }
 
-.scroll-to-top .arrow {
-    position: absolute;
-    width: 64.734px;
-    height: 62.351px;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-}
-
-.scroll-to-top .arrow img {
-    position: absolute;
-    inset: 0;
+.arrow {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: 50% 50%;
     pointer-events: none;
 }
 
-/* Leaflet map styles */
-.leaflet-container {
+.scroll-to-top.visible {
+    opacity: 0.5; /* Use the opacity from the original HTML class */
+    visibility: visible;
+}
+
+/* Custom utility classes */
+.text-custom-dark {
+    color: var(--color-brand-dark);
+}
+
+
+.font-cinzel {
+    font-family: 'Cinzel Decorative', serif;
+}
+
+/* --- Component Overrides --- */
+
+/* Custom Button Primary Color */
+.btn-primary {
+    --bs-btn-bg: var(--color-brand-primary);
+    --bs-btn-color: var(--color-brand-dark);
+    --bs-btn-border-color: var(--color-brand-primary);
+    --bs-btn-hover-bg: #a57b49; /* A slightly darker shade for hover */
+    --bs-btn-hover-border-color: #a57b49;
+    position: relative; /* Required for the shimmer pseudo-element */
+    overflow: hidden;   /* Hides the shimmer when it's off the button */
+}
+
+/* Shimmer animation pseudo-element */
+.btn-primary::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
-    background: #bf8e57;
+    background: linear-gradient(100deg, rgba(255, 255, 255, 0) 20%, rgba(255, 255, 255, 0.4) 50%, rgba(255, 255, 255, 0) 80%);
+    transform: translateX(-100%);
 }
 
-.leaflet-control-attribution {
-    font-size: 8px !important;
+/* Trigger the animation on hover */
+.btn-primary:hover::after {
+    transform: translateX(100%);
+    transition: transform 0.75s ease-in-out;
 }
 
-/* Custom marker popup */
-.leaflet-popup-content-wrapper {
-    background: #fff;
-    color: #403244;
-    font-family: 'Quattrocento', serif;
-    font-size: 12px;
-    text-align: center;
+/* Scrollspy Navigation */
+#scrollspyNav {
+    top: 50%;
+    left: 2rem;
+    transform: translateY(-50%);
+    z-index: 10;
 }
 
-.leaflet-popup-content {
-    margin: 8px 12px;
+#scrollspyNav .nav-link {
+    color: var(--color-brand-primary);
+    font-family: 'Cinzel Decorative', serif;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
 }
 
-.leaflet-popup-content a {
-    color: #bf8e57;
-    text-decoration: none;
+#scrollspyNav .nav-link.active {
+    color: var(--color-brand-dark);
+    background-color: var(--color-brand-primary);
 }
 
-.leaflet-popup-content a:hover {
+a:hover {
     text-decoration: underline;
-
 }
-
