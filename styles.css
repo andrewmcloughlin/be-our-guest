@@ -1,11 +1,22 @@
 /* Global color variables */
+::selection {
+  background-color: var(--color-brand-primary);
+  color: var(--color-brand-dark);           
+}
+
+/* Optional: Include -moz- for older Firefox versions */
+::-moz-selection {
+  background-color: var(--color-brand-primary);
+  color: var(--color-brand-dark);
+}
+
 :root {
-    --color-brand-primary: #d8a434;
-    --color-brand-dark: #403244;
+    --color-brand-primary: #d9b2f3;
+    --color-brand-dark: #073a52;
 
     /* Override Bootstrap primary color */
     --bs-primary: var(--color-brand-primary);
-    --bs-primary-rgb: 191, 142, 87;
+    --bs-primary-rgb: 7, 58, 82;
 }
 
 /* Reset and base styles */
@@ -201,8 +212,8 @@ body {
     --bs-btn-bg: var(--color-brand-primary);
     --bs-btn-color: var(--color-brand-dark);
     --bs-btn-border-color: var(--color-brand-primary);
-    --bs-btn-hover-bg: #a57b49; /* A slightly darker shade for hover */
-    --bs-btn-hover-border-color: #a57b49;
+    --bs-btn-hover-bg: #c391e4; /* A slightly darker shade for hover */
+    --bs-btn-hover-border-color: #c391e4;
     position: relative; /* Required for the shimmer pseudo-element */
     overflow: hidden;   /* Hides the shimmer when it's off the button */
 }
