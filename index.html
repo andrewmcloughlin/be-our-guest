@@ -1,33 +1,206 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400&family=Quattrocento:wght@400;700&display=swap" rel="stylesheet">
     <title>Ada's Princess Ball - You Are Invited</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400&family=Quattrocento:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+      background: linear-gradient(135deg, #f3e7f5 0%, #fce4ec 50%, #e3f2fd 100%);
+      position: relative;
+    }
+
+    .shape {
+      position: absolute;
+      opacity: 0.7;
+      will-change: transform, filter;
+    }
+
+    .circle {
+      border-radius: 50%;
+    }
+
+    .heart {
+      display: inline-block;
+    }
+
+    @keyframes float {
+      from {
+        transform: translate(var(--start-x), var(--start-y)) rotate(var(--start-rotate));
+        filter: blur(var(--start-blur));
+      }
+      to {
+        transform: translate(var(--end-x), var(--end-y)) rotate(var(--end-rotate));
+        filter: blur(var(--end-blur));
+      }
+    }
+  </style>
 </head>
 <body>
-    <div class="page-wrapper position-relative w-100 vh-100" data-bs-spy="scroll" data-bs-target="#scrollspyNav" data-bs-root-margin="0px 0px -40%">
+  <script>
+    const pastelColors = [
+      "#E0BBE4", // pastel purple
+      "#D4A5A5", // pastel mauve
+      "#FFD1DC", // pastel pink
+      "#FEC8D8", // light pink
+      "#B4D4FF", // pastel light blue
+      "#C9E4FF", // sky blue
+      "#E7C6FF", // lavender
+      "#FFC0E0", // pink
+      "#AED9E0", // light cyan
+    ];
+
+    function createHeart(size, color) {
+      const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+      svg.setAttribute("width", size);
+      svg.setAttribute("height", size);
+      svg.setAttribute("viewBox", "0 0 24 24");
+      svg.setAttribute("fill", color);
+      
+      const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+      path.setAttribute("d", "M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z");
+      
+      svg.appendChild(path);
+      return svg;
+    }
+
+    function createCircle(size, color) {
+      const circle = document.createElement("div");
+      circle.className = "circle";
+      circle.style.width = size + "px";
+      circle.style.height = size + "px";
+      circle.style.backgroundColor = color;
+      return circle;
+    }
+
+    function createFloatingShape() {
+      const isHeart = Math.random() > 0.5;
+      const size = Math.random() * 80 + 30; // 30-110px
+      const color = pastelColors[Math.floor(Math.random() * pastelColors.length)];
+      
+      const container = document.createElement("div");
+      container.className = "shape";
+      
+      // Random start and end positions (off screen)
+      const side = Math.floor(Math.random() * 4);
+      let startX, startY, endX, endY;
+      
+      const width = window.innerWidth;
+      const height = window.innerHeight;
+      
+      switch (side) {
+        case 0: // Start from top
+          startX = Math.random() * width;
+          startY = -200;
+          endX = Math.random() * width;
+          endY = height + 200;
+          break;
+        case 1: // Start from right
+          startX = width + 200;
+          startY = Math.random() * height;
+          endX = -200;
+          endY = Math.random() * height;
+          break;
+        case 2: // Start from bottom
+          startX = Math.random() * width;
+          startY = height + 200;
+          endX = Math.random() * width;
+          endY = -200;
+          break;
+        default: // Start from left
+          startX = -200;
+          startY = Math.random() * height;
+          endX = width + 200;
+          endY = Math.random() * height;
+      }
+      
+      const duration = (Math.random() * 15 + 10) * 1000; // 10-25 seconds
+      const delay = Math.random() * 5000; // 0-5 seconds delay
+      const startRotation = Math.random() * 60 - 30; // -30 to 30 degrees
+      const endRotation = startRotation + (Math.random() > 0.5 ? 360 : -360);
+      
+      // Random blur values for focus effect
+      const blurOptions = [
+        { start: 0, end: 0 }, // Always in focus
+        { start: 8, end: 8 }, // Always out of focus
+        { start: 0, end: 8 }, // Focus to blur
+        { start: 8, end: 0 }, // Blur to focus
+        { start: 0, end: 4 }, // Slight blur
+        { start: 4, end: 0 }, // Slight focus
+      ];
+      
+      const blur = blurOptions[Math.floor(Math.random() * blurOptions.length)];
+      
+      // Set CSS custom properties for animation
+      container.style.setProperty('--start-x', startX + 'px');
+      container.style.setProperty('--start-y', startY + 'px');
+      container.style.setProperty('--end-x', endX + 'px');
+      container.style.setProperty('--end-y', endY + 'px');
+      container.style.setProperty('--start-rotate', startRotation + 'deg');
+      container.style.setProperty('--end-rotate', endRotation + 'deg');
+      container.style.setProperty('--start-blur', blur.start + 'px');
+      container.style.setProperty('--end-blur', blur.end + 'px');
+      
+      container.style.animation = `float ${duration}ms linear ${delay}ms infinite`;
+      
+      // Add shape
+      if (isHeart) {
+        container.appendChild(createHeart(size, color));
+      } else {
+        container.appendChild(createCircle(size, color));
+      }
+      
+      document.body.appendChild(container);
+    }
+
+    // Define the number of shapes to create
+    const numberOfShapes = 30;
+
+    // Create initial shapes
+    for (let i = 0; i < numberOfShapes; i++) {
+      createFloatingShape();
+    }
+
+    // Recreate shapes on window resize to adjust positions
+    window.addEventListener('resize', () => {
+      const shapes = document.querySelectorAll('.shape');
+      shapes.forEach(shape => shape.remove()); // Remove existing shapes
+      for (let i = 0; i < numberOfShapes; i++) { // Recreate the same number of shapes
+        createFloatingShape();
+      }
+    });
+  </script>
+    <div class="page-wrapper position-relative w-100 vh-100 z-2" data-bs-spy="scroll" data-bs-target="#scrollspyNav" data-bs-root-margin="0px 0px -40%">
         <!-- Scrollspy Navigation -->
         <nav id="scrollspyNav" class="nav nav-pills flex-column position-fixed d-none d-xxl-flex">
-            <a class="nav-link text-light" href="#section-details">Details</a>
-            <a class="nav-link text-light" href="#section-entertainment">Entertainment</a>
-            <a class="nav-link text-light" href="#section-facilities">Facilities</a>
-            <a class="nav-link text-light" href="#section-gifts">Gifts</a>
-            <a class="nav-link text-light" href="#section-dress-code">Dress Code</a>
-            <!-- <a class="nav-link text-light" href="#section-schedule">Schedule</a> -->
+            <a class="nav-link text-dark" href="#section-details">Details</a>
+            <a class="nav-link text-dark" href="#section-entertainment">Entertainment</a>
+            <a class="nav-link text-dark" href="#section-facilities">Facilities</a>
+            <a class="nav-link text-dark" href="#section-gifts">Gifts</a>
+            <a class="nav-link text-dark" href="#section-dress-code">Dress Code</a>
+            <!-- <a class="nav-link text-dark" href="#section-schedule">Schedule</a> -->
         </nav>
 
-        <!-- Fixed velvet background -->
-        <div class="velvet-background position-fixed top-0 start-0 w-100 vh-100 z-1">
-            <img src="assets/velvet.png" alt="soft velvet textured background with floral decal">
-        </div>
 
-        <!-- Scrollable screen area -->
+        <!-- Scrollable screen area - Centered -->
         <div class="screen position-absolute top-0 start-0 end-0 vh-100 d-flex justify-content-center align-items-start" tabindex="0">
             <!-- Paper container -->
             <div class="paper position-relative col-lg-6 col-md-8 col-11">
@@ -52,7 +225,7 @@
                         <h1 class="mb-4 py-4 font-cinzel text-primary fs-1">You are invited</h1>
     
                         <div class="intro-text pb-4">
-                            <p class="mb-4 fs-5 text-custom-dark">By royal decree, you are cordially invited to attend Ada's princess ball this December. Please RSVP by 1st December.</p>
+                            <p class="mb-4 fs-5 text-custom-dark">By royal decree, you are cordially invited to attend Ada's princess ball this December</p>
                         </div>
                         <a href="https://forms.gle/qEa7g6nK1zREnyiYA" class="btn btn-lg btn-primary fw-bold" role="button">↢ RSVP ↣</a>
                     </header>
@@ -159,7 +332,6 @@
                         <h2 id="schedule-heading" class="mb-2 fs-3 text-primary fw-bold py-2">↢ Schedule (TBD) ↣</h2>
                         <p class="mb-0 fs-5 text-custom-dark text-start w-20">10:30 - 11:00: Arrival & free play<br>11:00 - 11:30: Princess Entertainer<br>11:30 - 12:00: Cake, Cake & more Cake<br>12:00 - 12:30: Disco & Farewell</p>
                     </section> -->
-                    
                 </main>
             </div>
         </div>
@@ -175,5 +347,3 @@
     <script src="script.js"></script>
 </body>
 </html>
-
-
