@@ -343,6 +343,15 @@
                         </h2>
                         <p class="mb-0 fs-5 text-custom-dark">Children are welcome to wear their fanciest attire should they so desire.</p>
                     </section>
+                    
+                    <section id="section-contact" class="section-text w-100" aria-labelledby="contact-heading">
+                        <h2 id="contact-heading" class="mb-2 fs-3 fw-bold">
+                          <span class="text-muted opacity-50">↢ </span>
+                          <span class="text-primary">Contact</span>
+                          <span class="text-muted opacity-50"> ↣</span>
+                        </h2>
+                        <p class="mb-0 fs-5 text-custom-dark">(Andrew) Tel. <span id="phone-number"></span></p>
+                    </section>
 
                     <div class="filigree-divider my-4" role="presentation">
                         <img src="assets/filigree-divider.png" alt="">
@@ -371,5 +380,12 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <script src="script.js"></script>
+    <script>
+      // A simple script to discourage bot scraping of the phone number.
+      const phoneElement = document.getElementById('phone-number');
+      const part1 = '07926';
+      const part2 = '716026'; // Replace with your actual number
+      phoneElement.textContent = `${part1} ${part2}`;
+    </script>
 </body>
 </html>
