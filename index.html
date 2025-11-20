@@ -57,7 +57,7 @@
   <script>
     const pastelColors = [
       "#E0BBE4", // pastel purple
-      "#D4A5A5", // pastel mauve
+      "#fac3c3", // pastel mauve
       "#FFD1DC", // pastel pink
       "#FEC8D8", // light pink
       "#B4D4FF", // pastel light blue
@@ -171,7 +171,7 @@
     }
 
     // Define the number of shapes to create
-    const numberOfShapes = 30;
+    const numberOfShapes = 50;
 
     // Create initial shapes
     for (let i = 0; i < numberOfShapes; i++) {
@@ -226,7 +226,8 @@
                         <div class="intro-text pb-4">
                             <p class="mb-4 fs-5 text-custom-dark">By royal decree, you are cordially invited to attend Ada's princess ball this December</p>
                         </div>
-                        <a href="https://forms.gle/qEa7g6nK1zREnyiYA" class="btn btn-lg btn-primary fw-bold" role="button">↢ RSVP ↣</a>
+                        <a href="https://forms.gle/qEa7g6nK1zREnyiYA" class="btn btn-lg btn-primary fw-bold pb-2 mb-2" role="button">↢ RSVP ↣</a>
+                        <p><small class="text-muted pt-2 mt-2">Please RSVP by <date>December 1<sup>th</sup></date></small></p>
                     </header>
 
                     <div class="filigree-divider my-4" role="presentation">
@@ -234,38 +235,42 @@
                     </div>
 
                     <section id="section-details" class="section-text w-80" aria-labelledby="details-heading">
-                        <h2 id="details-heading" class="mb-2 fs-3 text-primary fw-bold pb-4">↢ Details ↣</h2>
-                        <div class="details-time row w-100 gy-2 align-items-center pb-4">
-                            <div class="col-2">
-                                <p class="mb-0 fs-5 text-custom-dark fw-bold text-lg-start">Time:</p>
-                            </div>
-                            <div class="col-lg-6 text-lg-end">
-                                <p class="mb-0 fs-5 text-custom-dark">
-                                    Saturday 20<span class="superscript">th</span> December <br><time>10:30am&nbsp;-&nbsp;12:30pm</time>
-                                </p>
-                            </div>
-                            <div class="col-4 text-lg-end">
-                                <p class="mb-0"><a href="https://www.google.com/calendar/render?action=TEMPLATE&text=Ada%27s+Princess+Ball&dates=20251220T103000/20251220T123000&details=By+royal+decree%2C+you+are+cordially+invited+to+attend+Ada%27s+princess+ball+this+December.&location=Meadows+Community+Centre" target="_blank" rel="noopener noreferrer" class="link-primary text-decoration-none fs-5">
-                                    Save the Date
-                                </a></p>
-                            </div>
-                        </div>
-                        <div class="details-location row w-100 my-2 align-items-center pt-4">
-                            <div class="col-2">
-                                <p class="mb-0 fs-5 text-custom-dark fw-bold text-lg-start">
-                                    Location:
-                                </p>
-                            </div>
-                            <div class="col-lg-6 text-lg-end">
-                                <p class="mb-0 fs-5 text-custom-dark">
-                                    Meadows Community Centre
-                                </p>
-                            </div>
-                            <div class="col-lg-4 text-lg-end">
-                                <p class="mb-0"><a href="https://www.openstreetmap.org/directions?from=&to=52.230458%2C0.119047#map=19/52.230558/0.118889" class="link-primary text-decoration-none fs-5">
-                                    View on Map
-                                </a></p>
-                            </div>
+                        <h2 id="details-heading" class="mb-2 fs-3  fw-bold pb-4">
+                          <span class="text-muted opacity-50">↢ </span>
+                          <span class="text-primary">Details</span>
+                          <span class="text-muted opacity-50"> ↣</span>
+                        </h2>
+                        <div class="details-date row w-100 gy-2 align-items-center pb-4">
+                            <p class="mb-0 fs-5 text-custom-dark">
+                                Saturday 20<span class="superscript">th</span> December <br>
+                                <time class="fs-6 text-muted">10:30am&nbsp;-&nbsp;12:30pm</time>
+                            </p>
+                            <span>
+                              <a 
+                                class="btn btn-lsm btn-primary fw-bold pb-2 mb-2"
+                                role="button"
+                                href="https://www.google.com/calendar/render?action=TEMPLATE&text=Ada%27s+Princess+Ball&dates=20251220T103000/20251220T123000&details=By+royal+decree%2C+you+are+cordially+invited+to+attend+Ada%27s+princess+ball+this+December.&location=Meadows+Community+Centre" 
+                                target="_blank" 
+                                rel="noopener noreferrer">
+                                Add to Calendar
+                            </a>
+                            </span>
+                            <hr>
+                            <p class="mb-0 fs-5 text-custom-dark">
+                                Meadows Community Centre<br>
+                                299 Arbury Road | CB4 2JL
+                            </p>
+                            <small class="text-muted">FYI the entrance is incorrectly marked on Google Maps</small>
+                            <span>
+                              <a 
+                                class="btn btn-lsm btn-primary fw-bold pb-2 mb-2"
+                                role="button"
+                                href="https://www.openstreetmap.org/directions?from=&to=52.230458%2C0.119047#map=19/52.230558/0.118889"
+                                target="_blank" 
+                                rel="noopener noreferrer">
+                                View on Map
+                            </a>
+                            </span>
                         </div>
                     </section>
 
@@ -274,7 +279,11 @@
                     </div>
 
                     <section id="section-entertainment" class="section-text w-100" aria-labelledby="entertainment-heading">
-                        <h2 id="entertainment-heading" class="mb-2 fs-3 text-primary fw-bold">↢ Entertainment ↣</h2>
+                        <h2 id="entertainment-heading" class="mb-2 fs-3 fw-bold">
+                          <span class="text-muted opacity-50">↢ </span>
+                          <span class="text-primary">Entertainment</span>
+                          <span class="text-muted opacity-50"> ↣</span>
+                        </h2>
                         <div class="d-flex flex-wrap justify-content-center align-items-center gap-2">
                             <span class="fs-5 text-custom-dark">Soft play</span>
                             <span class="fs-5 text-muted" aria-hidden="true">⚜</span>
@@ -282,7 +291,7 @@
                             <span class="fs-5 text-muted" aria-hidden="true">⚜</span>
                             <span class="fs-5 text-custom-dark">Disco</span>
                             <span class="fs-5 text-muted" aria-hidden="true">⚜</span>
-                            <span class="fs-5 text-custom-dark">Cake, snacks & drinks</span>
+                            <span class="fs-5 text-custom-dark" title="let us know if you have any dietary requirements">Cake, snacks & drinks</span>
                         </div>
                     </section>
                     
@@ -291,9 +300,13 @@
                     </div>
                     
                     <section id="section-facilities" class="section-text w-100" aria-labelledby="facilities-heading">
-                        <h2 id="facilities-heading" class="mb-2 fs-3 text-primary fw-bold">↢ Facilities ↣</h2>
+                        <h2 id="facilities-heading" class="mb-2 fs-3 fw-bold">
+                          <span class="text-muted opacity-50">↢ </span>
+                          <span class="text-primary">Facilities</span>
+                          <span class="text-muted opacity-50"> ↣</span>
+                        </h2>
                         <div class="d-flex flex-wrap justify-content-center align-items-center gap-2">
-                            <span class="fs-5 text-custom-dark">Free parking</span>
+                            <span class="fs-5 text-custom-dark" title="up to 2 hours">Free parking*</span>
                             <span class="fs-5 text-muted" aria-hidden="true">⚜</span>
                             <span class="fs-5 text-custom-dark">Toilets</span>
                             <span class="fs-5 text-muted" aria-hidden="true">⚜</span>
@@ -310,7 +323,11 @@
                     </div>
 
                     <section id="section-gifts" class="section-text w-100" aria-labelledby="gifts-heading">
-                        <h2 id="gifts-heading" class="mb-2 fs-3 text-primary fw-bold">↢ Gifts ↣</h2>
+                        <h2 id="gifts-heading" class="mb-2 fs-3 fw-bold">
+                          <span class="text-muted opacity-50">↢ </span>
+                          <span class="text-primary">Gifts</span>
+                          <span class="text-muted opacity-50"> ↣</span>
+                        </h2>
                         <p class="mb-0 fs-5 text-custom-dark" title="Anyone doing so will be executed">Please do not bring gifts</p>
                     </section>
 
@@ -319,7 +336,11 @@
                     </div>
 
                     <section id="section-dress-code" class="section-text w-100" aria-labelledby="dress-code-heading">
-                        <h2 id="dress-code-heading" class="mb-2 fs-3 text-primary fw-bold">↢ Dress Code ↣</h2>
+                        <h2 id="dress-code-heading" class="mb-2 fs-3 fw-bold">
+                          <span class="text-muted opacity-50">↢ </span>
+                          <span class="text-primary">Facilities</span>
+                          <span class="text-muted opacity-50"> ↣</span>
+                        </h2>
                         <p class="mb-0 fs-5 text-custom-dark">Children are welcome to wear their fanciest attire should they so desire.</p>
                     </section>
 
@@ -331,6 +352,12 @@
                         <h2 id="schedule-heading" class="mb-2 fs-3 text-primary fw-bold py-2">↢ Schedule (TBD) ↣</h2>
                         <p class="mb-0 fs-5 text-custom-dark text-start w-20">10:30 - 11:00: Arrival & free play<br>11:00 - 11:30: Princess Entertainer<br>11:30 - 12:00: Cake, Cake & more Cake<br>12:00 - 12:30: Disco & Farewell</p>
                     </section> -->
+
+                    <section class="section-text w-100  pb-4 mb-4">
+                        <h2 class="fs-3 fw-bold pb-4 mb-4">
+                          <span class="text-primary">We look forward to seeing you there</span>
+                        </h2>
+                    </section>
                 </main>
             </div>
         </div>
